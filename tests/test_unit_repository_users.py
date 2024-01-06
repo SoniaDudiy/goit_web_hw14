@@ -57,6 +57,7 @@ class TestUser(IsolatedAsyncioTestCase):
         db = self.session
         token = user.refresh_token
         result = await update_token(user, token, db)
+        self.assertIsNotNone(result)
         self.assertEqual(result.refresh_token, token)
 
     async def test_confirmed_email(self):
@@ -64,6 +65,7 @@ class TestUser(IsolatedAsyncioTestCase):
         db = self.session
         db.query(User).filter_by(email=email).first.return_value = self.user
         result = await confirmed_email(email, db)
+        self.assertIsNotNone(result)
         self.assertTrue(result.confirmed)
 
     async def test_update_avatar(self):
@@ -76,6 +78,7 @@ class TestUser(IsolatedAsyncioTestCase):
         user = self.user
         password = "user.password"
         result = await update_password(user, password, self.session)
+        self.assertIsNotNone(result)
         self.assertEqual(result.password, password)
 
     async def test_update_reset_token(self):
@@ -83,6 +86,7 @@ class TestUser(IsolatedAsyncioTestCase):
         db = self.session
         token = "some string"
         result = await update_reset_token(user, token, db)
+        self.assertIsNotNone(result)
         self.assertEqual(result.password_reset_token, token)
 
 

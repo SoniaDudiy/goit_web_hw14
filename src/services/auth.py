@@ -7,6 +7,8 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.ext.asyncio import AsyncSession
 from jose import JWTError, jwt
 
+from src.conf import messages
+from src.conf.config import config
 from src.database.db import get_db
 from src.repository import users as repository_users
 

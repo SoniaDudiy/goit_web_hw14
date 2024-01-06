@@ -42,7 +42,7 @@ def healthchecker(db: Session = Depends(get_db)):
 app.include_router(auth.router)
 app.include_router(contacts.router)
 app.include_router(search.search)
-
+app.include_router(users.router)
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="localhost", port=9000, reload=True)

@@ -69,6 +69,5 @@ class TestSearch(IsolatedAsyncioTestCase):
         self.assertEqual(result[0], self.contacts[1])
         self.assertNotEqual(result[0], self.contacts[3])
 
-
 if __name__ == '__main__':
     unittest.main()
